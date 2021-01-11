@@ -1,0 +1,12 @@
+$brandColor: #C1AA76;
+
+.product {
+	min-height: 350px;
+	color: #000;
+	text-decoration: none;
+}
+.product:hover {
+	opacity: .8;
+	// background-color: rgba(193, 170, 118, .2);
+	border: 1px  solid $brandColor !important;
+}

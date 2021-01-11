@@ -1,0 +1,20 @@
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+  <ul class="formErrors">
+    <li class="text-danger" *ngIf="submitted && !checkoutForm.controls.firstname.valid">
+      Der Wert des Feldes "Vorname" ist ungültig
+    </li>
+    <li class="text-danger" *ngIf="submitted && !checkoutForm.controls.lastname.valid">
+      Der Wert des Feldes "Nachname" ist ungültig
+    </li>
+    <li class="text-danger" *ngIf="submitted && !checkoutForm.controls.email.valid">
+      Der Wert des Feldes "E-Mail-Adresse" ist ungültig
+    </li>
+  </ul>
+  <label for="name">Vorname</label>
+  <input class="form-control" id="firstname" formControlName="firstname" />
+  <label for="street">Nachname</label>
+  <input class="form-control" id="lastname" formControlName="lastname" />
+  <label for="email">E-Mail-Addresse</label>
+  <input class="form-control" id="email" formControlName="email" type="email" />
+  <button type="submit" class="mt-2 btn btn-gucci">Absenden</button>
+</form>

@@ -1,0 +1,12 @@
+<div class="row mt-4" *ngIf="product$ | async as product">
+  <div class="col-md-4">
+    <img src="/img/{{ product.image  }}" class="mw-100" />
+  </div>
+  <div class="row-md-8 px-4">
+    <h3 class="">{{ product.name }}</h3>
+    <span class="">{{ product.discontPrice | currency: 'CHF ' }}&nbsp;</span>
+    <span class="text-warning"><del>{{ product.price | currency: 'CHF ' }}</del></span>
+    <p>{{ product.description }}</p>
+    <button class="btn btn-gucci" (click)="productService.addProduct(product)">Zum Warenkorb hinzufügen</button>
+  </div>
+</div>

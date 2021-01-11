@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-xl-3 col-md-4 col-sm-12 mt-2 px-1" *ngFor="let product of products | async">
+    <a class="card product" [routerLink]="['/details',product.id]">
+      <div class="card-body">
+        <h5 class="card-title">{{ product.name }}</h5>
+        <img src="/img/{{ product.image }}" class="mw-100" />
+        <span class="card-text">{{ product.discontPrice | currency: 'CHF ' }}&nbsp;</span>
+        <span class="card-text text-warning"><del>{{ product.price | currency: 'CHF ' }}</del></span>
+      </div>
+    </a>
+  </div>
+</div>
