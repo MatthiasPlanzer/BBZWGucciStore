@@ -3,7 +3,7 @@
     <a class="card product" [routerLink]="['/details',product.id]">
       <div class="card-body">
         <h5 class="card-title">{{ product.name }}</h5>
-        <img src="/img/{{ product.image }}" class="mw-100" />
+        <img src="/img/{{ product.image }}" alt="Produktbild" class="mw-100" />
         <span class="card-text">{{ product.discontPrice | currency: 'CHF ' }}&nbsp;</span>
         <span class="card-text text-warning"><del>{{ product.price | currency: 'CHF ' }}</del></span>
       </div>

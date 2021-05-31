@@ -1,6 +1,6 @@
 <div class="row mt-4" *ngIf="product$ | async as product">
   <div class="col-md-4">
-    <img src="/img/{{ product.image  }}" class="mw-100" />
+    <img src="/img/{{ product.image  }}" alt="{{ product.name }}" class="mw-100" />
   </div>
   <div class="row-md-8 px-4">
     <h3 class="">{{ product.name }}</h3>
