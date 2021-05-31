@@ -17,7 +17,7 @@ export class AppComponent implements OnInit, OnDestroy {
   grandTotal: Promise<number>;
   title = 'BBZW Gucci Store';
   isMenuCollapsed = true;
-  static forRoot(config: ProductService): ModuleWithProviders {
+  static forRoot(config: ProductService): ModuleWithProviders<AppComponent> {
     return {
       ngModule: AppComponent,
       providers: [

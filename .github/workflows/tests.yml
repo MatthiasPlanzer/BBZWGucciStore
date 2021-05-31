@@ -24,7 +24,7 @@ jobs:
       run: npm run build
     - name: Run in background
       run: |
-        npm start &
+        npm run start-backend &
     - name: Test
       run: npm test -- --configuration=ci
     #   No E2E tests are available
