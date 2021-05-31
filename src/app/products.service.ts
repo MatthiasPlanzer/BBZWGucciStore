@@ -86,7 +86,8 @@ export class ProductService {
     this.onKartUpdate();
   }
   public async resetKart() {
-    await this.http.get('http://localhost:3000/api/shoppingKart/reset', { withCredentials: true }).toPromise();
+    const res = await this.http.get('http://localhost:3000/api/shoppingKart/reset', { withCredentials: true }).toPromise();
+    console.log(res);
     this.onKartUpdate();
   }
 }

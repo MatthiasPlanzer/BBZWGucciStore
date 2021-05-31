@@ -33,7 +33,7 @@ const appRoutes: Routes = [
   imports: [
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: false }
+      { enableTracing: false, relativeLinkResolution: 'legacy' }
     ),
     BrowserModule,
     HttpClientModule,
