@@ -21,9 +21,12 @@ jobs:
     - name: Lint
       run: npm run lint
     - name: Build
-      run: npm run build -- --prod
+      run: npm run build
+    - name: Run in background
+      run: |
+        npm start &
     - name: Test
-      run: npm test
+      run: npm test -- --configuration=ci
     #   No E2E tests are available
     # - name: E2E
     #   run: npm run e2e
