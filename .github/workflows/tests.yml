@@ -20,9 +20,11 @@ jobs:
       run: npm install
     - name: Lint
       run: npm run lint
-    # Already done by Test step, would be duplicate
-    # - name: Build
-    #   run: npm run build -- --prod
+    - name: Build
+      run: npm run build
+    - name: Run in background
+      run: |
+        npm start &
     - name: Test
       run: npm test -- --configuration=ci
     #   No E2E tests are available

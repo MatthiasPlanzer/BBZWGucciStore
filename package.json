@@ -2,9 +2,9 @@
   "name": "bbzwgucci-store",
   "version": "0.0.0",
   "scripts": {
-    "start": "npm run build && node backend/server",
+    "start": "node backend/server",
     "build": "npm run compileBackend && ng build",
-    "test": "npm run && ng test",
+    "test": "ng test",
     "lint": "ng lint",
     "compileBackend": "tsc --p backend/tsconfig.json"
   },
