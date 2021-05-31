@@ -1,0 +1,29 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    # Machine environment:
+    # https://help.github.com/en/articles/software-in-virtual-environments-for-github-actions#ubuntu-1804-lts
+    # We specify the Node.js version manually below, and use versioned Chrome from Puppeteer.
+    runs-on: ubuntu-18.04
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup node 12.8
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.8
+    - name: Install npm packages
+      run: npm install
+    - name: Lint
+      run: npm run lint
+    - name: Build
+      run: npm run build -- --prod
+    - name: Test
+      run: npm test
+    #   No E2E tests are available
+    # - name: E2E
+    #   run: npm run e2e
