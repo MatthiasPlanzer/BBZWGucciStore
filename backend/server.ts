@@ -1,7 +1,6 @@
 import * as express from 'express';
 import * as path from 'path';
 import * as session from 'express-session';
-import * as cors from 'cors';
 import { IShoppingKartItem } from './types';
 // Original angular email validation regex.
 // tslint:disable-next-line: max-line-length
@@ -20,7 +19,6 @@ if (app.get('env') === 'production') {
   app.set('trust proxy', 1);
   sess.cookie.secure = true;
 }
-app.use(cors());
 app.use(session(sess));
 app.use((req, res, next) => {
   // I HATE CORS!!!!
