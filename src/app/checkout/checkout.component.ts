@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms';
+import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { ProductService } from '../products.service';
 import Swal from 'sweetalert2';
@@ -16,7 +16,6 @@ export class CheckoutComponent implements OnInit {
   checkoutForm: FormGroup;
   // checkout;
   constructor(
-    private formBuilder: FormBuilder,
     private http: HttpClient,
     public productService: ProductService
   ) {
@@ -65,7 +64,6 @@ export class CheckoutComponent implements OnInit {
     });
     // Process checkout data here
     console.warn('Your order has been submitted', this.checkoutForm);
-
     this.productService.resetKart();
     this.checkoutForm.reset();
   }
