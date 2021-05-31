@@ -2,16 +2,15 @@
   "name": "bbzwgucci-store",
   "version": "0.0.0",
   "scripts": {
-    "start": "npm run build && npm run start-backend",
+    "start": "npm run build --prod && npm run start-backend",
     "start-backend": "node backend/server",
-    "build": "npm run compileBackend && ng build",
+    "build": "npm run compile-backend && ng build",
     "test": "ng test --configuration=ci",
     "lint": "ng lint",
-    "compileBackend": "tsc --p backend/tsconfig.json"
+    "compile-backend": "tsc --p backend/tsconfig.json"
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "12.0.2",
     "@angular/common": "12.0.2",
     "@angular/compiler": "12.0.2",
     "@angular/compiler-cli": "12.0.2",
@@ -36,6 +35,8 @@
     "@angular-devkit/build-angular": "12.0.2",
     "@angular/cli": "12.0.2",
     "@angular/language-service": "12.0.2",
+    "@types/express": "^4.17.12",
+    "@types/express-session": "^1.17.3",
     "@types/jasmine": "3.6.11",
     "@types/jasminewd2": "2.0.8",
     "@types/node": "12.20.13",

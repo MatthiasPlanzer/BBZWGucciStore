@@ -2,7 +2,13 @@ import * as express from 'express';
 import * as path from 'path';
 import * as session from 'express-session';
 import { IShoppingKartItem } from './types';
-// Original angular email validation regex.
+
+declare module 'express-session' {
+  export interface SessionData {
+    kartItems: IShoppingKartItem[];
+  }
+}
+// Email verification regex.
 // tslint:disable-next-line: max-line-length
 const EMAIL_REGEXP = /^(?=.{1,254}$)(?=.{1,64}@)[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 const app = express();
@@ -20,7 +26,7 @@ if (app.get('env') === 'production') {
   sess.cookie.secure = true;
 }
 app.use(session(sess));
-app.use((req, res, next) => {
+app.use((_req, res, next) => {
   // I HATE CORS!!!!
   res.header('Access-Control-Allow-Origin', 'http://localhost:9876');
   res.header('Access-Control-Allow-Credentials', 'true');
@@ -31,13 +37,16 @@ app.get('/api/checkout', (req, res) => {
   const resJson = {
     invalid: []
   };
-  if (typeof req.query.firstname !== 'string' || req.query.length < 2) {
+  const firstname = req.query.firstname;
+  const lastname = req.query.lastname;
+  const email = req.query.email;
+  if (typeof firstname !== 'string' || firstname.length < 2) {
     resJson.invalid.push('Vorname');
   }
-  if (typeof req.query.lastname !== 'string' || req.query.length < 2) {
+  if (typeof lastname !== 'string' || lastname.length < 2) {
     resJson.invalid.push('Nachname');
   }
-  if (typeof req.query.email !== 'string' || !req.query.email.match(EMAIL_REGEXP)) {
+  if (typeof email !== 'string' || !email.match(EMAIL_REGEXP)) {
     resJson.invalid.push('E-Mail');
   }
 
@@ -53,9 +62,9 @@ app.get('/api/shoppingKart/add/:id', (req, res) => {
   if (!req.session.kartItems) {
     req.session.kartItems = [];
   }
-  const id = req.params.id;
+  const id = +req.params.id;
   let alreadyIsInKart = false;
-  req.session.kartItems.forEach(kartItem => {
+  req.session.kartItems.forEach((kartItem: IShoppingKartItem) => {
     if (kartItem.productId === id) {
       kartItem.count += 1;
       alreadyIsInKart = true;
@@ -74,7 +83,7 @@ app.get('/api/shoppingKart/remove/:id', (req, res) => {
   if (!req.session.kartItems) {
     req.session.kartItems = [];
   }
-  const id = req.params.id;
+  const id = +req.params.id;
   req.session.kartItems.forEach((kartItem, index, array) => {
     if (kartItem.productId === id) {
       kartItem.count -= 1;
@@ -86,19 +95,17 @@ app.get('/api/shoppingKart/remove/:id', (req, res) => {
   });
   res.send('1');
 });
+
 app.get('/api/shoppingKart/reset', (req, res) => {
   req.session.kartItems = [];
   res.send('1');
 });
-// app.get('/api/price')
-
 
 app.use(express.static(path.join(__dirname, '../dist/BBZWGucciStore')));
 
-// app.use('/data', < your route file > );
-app.use((req, res) => {
+app.use((_req: any, res: { sendFile: (arg0: string) => void; }) => {
   res.sendFile(path.join(__dirname, '../dist/BBZWGucciStore', 'index.html'));
 });
 app.listen(3000, () => {
-  console.log('Example app listening on port 3000!');
+  console.log('Der Gucci-Store ist verfügbar unter "http://localhost:3000"');
 });

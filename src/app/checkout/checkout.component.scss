@@ -1,5 +1,8 @@
 $gucci: #C1AA76;
 
+.ng-untouched.ng-invalid {
+  border-color: #000 !important
+}
 .ng-invalid {
   border-color: var(--red)
 }
