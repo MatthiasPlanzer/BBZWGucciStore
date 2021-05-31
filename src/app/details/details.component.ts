@@ -15,12 +15,5 @@ export class DetailsComponent implements OnInit {
     console.log(this.route.snapshot.params.id);
     this.route.paramMap.subscribe(() => {
     });
-    // this.route.paramMap.pipe(
-    //   switchMap((value: ParamMap, index: number) => {
-    //     console.log(value, +value.get('id'), arguments);
-    //     this.product = new ProductService().getProductByID(+value.get('id'));
-    //     return [];
-    //   })
-    // );
   }
 }

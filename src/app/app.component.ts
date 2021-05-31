@@ -1,6 +1,6 @@
 import { Component, ModuleWithProviders, OnInit, OnDestroy } from '@angular/core';
 import { ProductService } from './products.service';
-import { Observer, Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',

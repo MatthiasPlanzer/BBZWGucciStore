@@ -38,9 +38,7 @@ const appRoutes: Routes = [
     BrowserModule,
     HttpClientModule,
     NgbModule,
-    // FormsModule,
     ReactiveFormsModule,
-    // ProductService
   ],
   providers: [
     ProductService

@@ -11,7 +11,6 @@ export class ProductService {
   private static products: Array<IProduct> = [];
   private static shoppingKart: Array<IShoppingKartItem> = [];
   public kartSubject = new Subject<IShoppingKartItem>();
-  // private static http: HttpClient;
   constructor(private http: HttpClient) { }
   public async getProducts(): Promise<Array<IProduct>> {
     if (!ProductService.products.length) {
@@ -86,8 +85,7 @@ export class ProductService {
     this.onKartUpdate();
   }
   public async resetKart() {
-    const res = await this.http.get('http://localhost:3000/api/shoppingKart/reset', { withCredentials: true }).toPromise();
-    console.log(res);
+    await this.http.get('http://localhost:3000/api/shoppingKart/reset', { withCredentials: true }).toPromise();
     this.onKartUpdate();
   }
 }

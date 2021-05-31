@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms';
-import { HttpClient, HttpUrlEncodingCodec, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { ProductService } from '../products.service';
 import Swal from 'sweetalert2';
 import { IFormValidationResponse } from '../../../backend/types';
@@ -41,14 +41,13 @@ export class CheckoutComponent implements OnInit {
   async onSubmit() {
     if (this.checkoutForm.invalid) {
       this.submitted = true;
-      // this.checkoutForm.controls.lastname.show = true;
       return false;
     }
     const params = new HttpParams()
       .set('firstname', this.checkoutForm.controls.firstname.value)
       .set('lastname', this.checkoutForm.controls.lastname.value)
       .set('email', this.checkoutForm.controls.email.value);
-    const req = await this.http.get('/api/checkout', { params }).toPromise().then((rawRes) => {
+    await this.http.get('/api/checkout', { params }).toPromise().then((rawRes) => {
       const typedRes = rawRes as IFormValidationResponse;
       if (typedRes.invalid && typedRes.invalid.length) {
         let msg = '';

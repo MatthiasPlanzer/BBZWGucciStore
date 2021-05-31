@@ -28,8 +28,7 @@
               "src/img"
             ],
             "styles": [
-              "src/styles.scss",
-              "src/bootstrap.css"
+              "src/styles.scss"
             ],
             "scripts": [
             ],
