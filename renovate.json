@@ -19,7 +19,7 @@
   "lockFileMaintenance": {
     "enabled": true
   },
-  "rangeStrategy": "widen",
+  "rangeStrategy": "replace",
   "separatePatchReleases": true,
   "separateMultipleMajor": true,
   "masterIssue": true,
