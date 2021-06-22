@@ -1,4 +1,4 @@
-$gucci: #C1AA76;
+@import "../global.scss";
 
 .ng-untouched.ng-invalid {
   border-color: #000 !important
@@ -8,5 +8,5 @@ $gucci: #C1AA76;
 }
 
 .ng-valid {
-  border-color: $gucci
+  border-color: $brandColor
 }
