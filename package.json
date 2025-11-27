@@ -23,7 +23,7 @@
     "bootstrap": "^5.0.0",
     "core-util-is": "^1.0.2",
     "express-session": "^1.17.2",
-    "rxjs": "^6.5.4",
+    "rxjs": "^7.0.0",
     "sweetalert2": "^11.0.0",
     "zone.js": "^0.13.0"
   },
